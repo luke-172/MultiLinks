@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel - Linktree</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <style>
+        body {
+        background: #303030 !important;
+    }
+    
+    .link-field {
+        background: #222;
+        padding: 15px;
+        border-radius: 8px;
+        margin-bottom: 15px;
+        border-left: 4px solid #5bff8c;
+        transition: all 0.3s;
+    }
+        .link-field {
+            background: #222;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            border-left: 4px solid #5bff8c;
+            transition: all 0.3s;
+        }
+        .link-field:hover {
+            border-left-color: #77ff9e;
+            transform: translateX(5px);
+        }
+        .dica {
+            color: #888;
+            font-size: 13px;
+            margin-top: 5px;
+            display: block;
+        }
+        .botoes {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+        }
+        .botoes .form-btn {
+            flex: 1;
+        }
+        .visualizar-btn {
+            background: #667eea;
+            color: white;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+        }
+        .visualizar-btn:hover {
+            background: #764ba2;
+        }
+    </style>
+</head>
+<body>
+    
+    <header class="site-header">
+        <h1>Painel de Configuração</h1>
+        <nav class="site-nav">
+            <a href="/painel" class="active">Painel</a>
+            <a href="/linktree" target="_blank">Ver Página</a>
+            <a href="/logout" class="logout-btn">Sair</a>
+        </nav>
+    </header>
+    
+    <main class="main-content">
+        <div class="card">
+            <h2>Personalize sua página</h2>
+            
+            <form method="POST" action="/salvar">
+                
+                <!-- Nome -->
+                <div class="form-group">
+                    <label class="form-label">Seu Nome:</label>
+                    <input type="text" name="nome" placeholder="Ex: Lucas Poceira" 
+                           value="{{.Nome}}" class="form-input" required>
+                </div>
+                
+                <!-- Bio -->
+                <div class="form-group">
+                    <label class="form-label">Bio (uma frase):</label>
+                    <input type="text" name="bio" placeholder="Ex: Desenvolvedor / Criador de conteúdo" 
+                           value="{{.Bio}}" class="form-input" maxlength="100">
+                </div>
+                
+                <!-- Foto -->
+                <div class="form-group">
+                    <label class="form-label">URL da Foto:</label>
+                    <input type="text" name="foto" placeholder="https://exemplo.com/foto.jpg" 
+                           value="{{.Foto}}" class="form-input">
+                </div>
+                
+                <!--Background-->
+                <div class="form-group">
+                    <label class="form-label">Fundo da página:</label>
+                    <select name="background" class="form-select">
+                        <option value="#0e0e0e" {{if eq .Background "#0e0e0e"}}selected{{end}}>
+                            Preto
+                        </option>
+                        <option value="#16213e" {{if eq .Background "#16213e"}}selected{{end}}>
+                            Azul Marinho
+                        </option>
+                        <option value="#393e46" {{if eq .Background "#393e46"}}selected{{end}}>
+                            Cinza Médio
+                        </option>
+                        <option value="#1e5128" {{if eq .Background "#1e5128"}}selected{{end}}>
+                            Verde Floresta
+                        </option>
+                        <option value="#cce0e0" {{if eq .Background "#cce0e0"}}selected{{end}}>
+                            Branco
+                        </option>
+                    </select>
+                </div>
+                
+                <!--LINKS-->
+                <h3>Seus Links (até 5)</h3>
+                <p class="dica">Preencha apenas os que quiser usar</p>
+                
+                <!-- Link 1 -->
+                <div class="link-field">
+                    <div class="form-label">Link 1:</div>
+                    <input type="text" name="titulo1" placeholder="Título (ex: Youtube)" 
+                           class="form-input" value="{{if .Links}}{{index .Links 0}}{{end}}">
+                    <input type="text" name="url1" placeholder="URL (ex: https://Youtube.com)" 
+                           class="form-input">
+                </div>
+                
+                <!-- Link 2 -->
+                <div class="link-field">
+                    <div class="form-label">Link 2:</div>
+                    <input type="text" name="titulo2" placeholder="Título" class="form-input">
+                    <input type="text" name="url2" placeholder="URL" class="form-input">
+                </div>
+                
+                <!-- Link 3 -->
+                <div class="link-field">
+                    <div class="form-label">Link 3:</div>
+                    <input type="text" name="titulo3" placeholder="Título" class="form-input">
+                    <input type="text" name="url3" placeholder="URL" class="form-input">
+                </div>
+                
+                <!-- Link 4 -->
+                <div class="link-field">
+                    <div class="form-label">Link 4:</div>
+                    <input type="text" name="titulo4" placeholder="Título" class="form-input">
+                    <input type="text" name="url4" placeholder="URL" class="form-input">
+                </div>
+                
+                <!-- Link 5 -->
+                <div class="link-field">
+                    <div class="form-label">Link 5:</div>
+                    <input type="text" name="titulo5" placeholder="Título" class="form-input">
+                    <input type="text" name="url5" placeholder="URL" class="form-input">
+                </div>
+                
+                <!--BOTÕES-->
+                <div class="botoes">
+                    <button type="submit" class="form-btn">Salvar Configurações</button>
+                    <a href="/linktree" target="_blank" class="form-btn visualizar-btn">Ver Página</a>
+                </div>
+                
+            </form>
+            
+        </div>
+    </main>
+
+</body>
+</html>

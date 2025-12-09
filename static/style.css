@@ -1,0 +1,394 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background: #303030;
+  color: #f0f0f0;
+  min-height: 100vh;
+}
+
+.login-body {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-box {
+  background: #1a1a1a;
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+  width: 400px;
+  text-align: center;
+}
+
+.login-box h1 {
+  color: #5bff8c;
+  margin-bottom: 30px;
+}
+
+.login-input {
+  width: 100%;
+  padding: 12px;
+  border-radius: 6px;
+  border: 1px solid #444;
+  margin-bottom: 15px;
+  background: #2a2a2a;
+  color: #f0f0f0;
+  font-size: 16px;
+}
+
+.login-btn {
+  background: #5bff8c;
+  color: #000;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  width: 100%;
+  transition: 0.3s;
+}
+
+.login-btn:hover {
+  background: #77ff9e;
+  transform: translateY(-2px);
+}
+
+.erro {
+  background: #ff4d4d;
+  color: white;
+  padding: 12px;
+  border-radius: 6px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.credenciais {
+  margin-top: 20px;
+  color: #888;
+  font-size: 14px;
+}
+
+/* ======== HEADER (PAINEL) ======== */
+.site-header {
+  background: #181818;
+  padding: 15px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #333;
+}
+
+.site-header h1 {
+  margin: 0;
+  color: #5bff8c;
+  font-weight: 600;
+}
+
+.site-nav {
+  display: flex;
+  gap: 15px;
+}
+
+.site-nav a {
+  color: #ddd;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 8px 16px;
+  border-radius: 5px;
+  transition: 0.3s;
+}
+
+.site-nav a:hover {
+  color: #5bff8c;
+  background: rgba(91, 255, 140, 0.1);
+}
+
+.site-nav a.active {
+  background: #5bff8c;
+  color: #000;
+}
+
+.logout-btn {
+  background: #ff4d4d;
+  color: white !important;
+}
+
+.logout-btn:hover {
+  background: #ff3333;
+}
+
+/* ======== PAINEL PRINCIPAL ======== */
+.main-content {
+  padding: 40px 20px;
+  max-width: 700px;
+  margin: auto;
+}
+
+/* ======== CARD DO FORMULÁRIO ======== */
+.card {
+  background: #1a1a1a;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+}
+
+.card h2 {
+  margin-bottom: 25px;
+  color: #5bff8c;
+}
+
+.card h3 {
+  margin: 25px 0 15px 0;
+  color: #ddd;
+  font-size: 18px;
+}
+
+/* ======== FORMULÁRIOS DO PAINEL ======== */
+.form-input, .form-select {
+  width: 100%;
+  padding: 12px;
+  border-radius: 6px;
+  border: 1px solid #444;
+  margin-bottom: 15px;
+  background: #2a2a2a;
+  color: #f0f0f0;
+  font-size: 16px;
+}
+
+.form-label {
+  display: block;
+  margin-bottom: 8px;
+  color: #ccc;
+}
+
+.form-btn {
+  background: #5bff8c;
+  color: #000;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  transition: 0.3s;
+  margin-top: 10px;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.form-btn:hover {
+  background: #77ff9e;
+  transform: translateY(-2px);
+}
+
+/* Botão visualizar (azul) */
+.visualizar-btn {
+  background: #667eea;
+  color: white;
+}
+
+.visualizar-btn:hover {
+  background: #764ba2;
+}
+
+/* ======== LINKS NO PAINEL ======== */
+.link-field {
+  background: #222;
+  padding: 15px;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  border-left: 4px solid;
+}
+
+.link-vazio {
+  border-left-color: #666;
+  opacity: 0.7;
+}
+
+.link-preenchido {
+  border-left-color: #5bff8c;
+}
+
+.link-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.link-number {
+  color: #5bff8c;
+  font-weight: bold;
+}
+
+.link-status {
+  color: #5bff8c;
+  font-size: 12px;
+}
+
+/* ======== PÁGINA PÚBLICA (LINKTREE) ======== */
+.public-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+  transition: background 0.5s ease;
+}
+
+.profile-card {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 40px;
+  text-align: center;
+  width: 100%;
+  max-width: 400px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.avatar-container {
+  margin-bottom: 25px;
+}
+
+.avatar {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  border: 3px solid rgba(255, 255, 255, 0.5);
+  object-fit: cover;
+}
+
+.avatar-placeholder {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: rgba(91, 255, 140, 0.8);
+  color: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 48px;
+  font-weight: bold;
+  margin: 0 auto;
+  border: 3px solid rgba(255, 255, 255, 0.5);
+}
+
+.profile-name {
+  font-size: 28px;
+  margin: 0 0 10px 0;
+  color: white;
+}
+
+.profile-bio {
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 30px;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.links-section {
+  width: 100%;
+}
+
+.link-button {
+  display: block;
+  background: rgba(255, 255, 255, 0.15);
+  color: white;
+  padding: 16px;
+  margin: 12px 0;
+  border-radius: 10px;
+  text-decoration: none;
+  text-align: center;
+  font-weight: bold;
+  font-size: 16px;
+  transition: all 0.3s;
+  border: 2px solid transparent;
+}
+
+.link-button:hover {
+  background: rgba(255, 255, 255, 0.25);
+  border-color: #5bff8c;
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.no-links-message {
+  color: rgba(255, 255, 255, 0.6);
+  font-style: italic;
+  padding: 20px;
+}
+
+/* ======== PREVIEW NO PAINEL ======== */
+.preview-container {
+  background: #2a2a2a;
+  padding: 20px;
+  border-radius: 10px;
+  margin-top: 30px;
+  border: 2px dashed #5bff8c;
+}
+
+.preview-container h3 {
+  color: #5bff8c;
+  margin-bottom: 10px;
+}
+
+/* ======== BOTÕES EM LINHA ======== */
+.botoes {
+  display: flex;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.botoes .form-btn {
+  flex: 1;
+}
+
+/* ======== DICA TEXTUAL ======== */
+.dica {
+  color: #888;
+  font-size: 13px;
+  margin-top: 5px;
+  display: block;
+}
+
+/* ======== RESPONSIVIDADE ======== */
+@media (max-width: 768px) {
+  .site-header {
+    flex-direction: column;
+    gap: 15px;
+    text-align: center;
+  }
+  
+  .main-content {
+    padding: 20px 15px;
+  }
+  
+  .card {
+    padding: 20px;
+  }
+  
+  .botoes {
+    flex-direction: column;
+  }
+  
+  .login-box {
+    width: 90%;
+    padding: 30px 20px;
+  }
+  
+  .profile-card {
+    padding: 25px 20px;
+  }
+}

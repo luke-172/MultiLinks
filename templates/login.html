@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Linktree</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body class="login-body">
+    
+    <div class="login-container">
+        <div class="login-box">
+            <h1>Login</h1>
+            
+            {{if .Erro}}
+            <div class="erro">{{.Erro}}</div>
+            {{end}}
+            
+            <form method="POST" action="/login">
+                <input type="text" name="usuario" placeholder="Usuário" class="login-input" required>
+                <input type="password" name="senha" placeholder="Senha" class="login-input" required>
+                
+                <button type="submit" class="login-btn">Entrar</button>
+            </form>
+            
+            <div class="credenciais">
+                <strong>Credenciais para teste:</strong><br>
+                Usuário: <code>admin</code><br>
+                Senha: <code>123</code>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

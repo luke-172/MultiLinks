@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{if .Nome}}{{.Nome}} - Linktree{{else}}Meu Linktree{{end}}</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            background: {{.Background}};
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            transition: background 0.5s ease;
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="public-container">
+        <div class="profile-card">
+            
+            <!--Foto-->
+            <div class="avatar-container">
+                {{if .Foto}}
+                    <img src="{{.Foto}}" alt="Foto de {{.Nome}}" class="avatar"
+                         onerror="this.style.display='none'; document.getElementById('avatar-placeholder').style.display='flex';">
+                {{end}}
+                
+                <div id="avatar-placeholder" class="avatar-placeholder"
+                     {{if .Foto}}style="display:none"{{end}}>
+                    {{if .Nome}}
+                        {{slice .Nome 0 1}}
+                    {{else}}
+                        ?
+                    {{end}}
+                </div>
+            </div>
+            
+            <!--Nome-->
+            <h1 class="profile-name">
+                {{if .Nome}}{{.Nome}}{{else}}Seu Nome Aqui{{end}}
+            </h1>
+            
+            <!--Bio-->
+            {{if .Bio}}
+            <p class="profile-bio">{{.Bio}}</p>
+            {{end}}
+            
+            <!--Links-->
+            <div class="links-section">
+                {{if .Links}}
+                    {{range .Links}}
+                    <a href="{{.URL}}" target="_blank" class="link-button">
+                        {{.Titulo}}
+                    </a>
+                    {{end}}
+                {{else}}
+                    <p class="no-links">Nenhum link configurado ainda.</p>
+                {{end}}
+            </div>
+            
+            <!--Link para admin-->
+            <div class="admin-link">
+                <a href="/painel">Editar</a>
+            </div>
+            
+        </div>
+    </div>
+
+</body>
+</html>
