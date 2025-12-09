@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"html/template"
 	"net/http"
+	"os"
 	"strconv"
 )
 
@@ -29,20 +30,27 @@ func main() {
 	templates = make(map[string]*template.Template)
 	carregarTemplates()
 
-	// Serve arquivos estáticos (CSS)
 	http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("static"))))
 
-	// Rotas
 	http.HandleFunc("/", loginPage)
 	http.HandleFunc("/login", loginHandler)
+	http.HandleFunc("/logout", logoutHandler)
 	http.HandleFunc("/painel", painelPage)
 	http.HandleFunc("/salvar", salvarHandler)
 	http.HandleFunc("/linktree", linktreePage)
 
-	fmt.Println("Servidor em http://localhost:8080")
-	fmt.Println("Usuário: admin / Senha: 123")
+	fmt.Println("Servidor pronto!")
 	
-	http.ListenAndServe(":8080", nil)
+	port := os.Getenv("PORT")
+	if port == "" {
+		port = "8080" 
+	}
+	fmt.Printf("Servidor rodando na porta %s\n", port)
+	err := http.ListenAndServe(":"+port, nil)
+	
+	if err != nil {
+		fmt.Println("❌ Erro ao iniciar servidor:", err)
+	}
 }
 
 func carregarTemplates() {
@@ -86,6 +94,17 @@ func loginHandler(w http.ResponseWriter, r *http.Request) {
 		dados := map[string]string{"Erro": "Usuário ou senha incorretos!"}
 		templates["login"].Execute(w, dados)
 	}
+}
+
+func logoutHandler(w http.ResponseWriter, r *http.Request) {
+	cookie := &http.Cookie{
+		Name:   "session",
+		Value:  "",
+		Path:   "/",
+		MaxAge: -1,
+	}
+	http.SetCookie(w, cookie)
+	http.Redirect(w, r, "/", http.StatusSeeOther)
 }
 
 func painelPage(w http.ResponseWriter, r *http.Request) {
